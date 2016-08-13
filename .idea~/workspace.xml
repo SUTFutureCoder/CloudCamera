@@ -1,52 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="285948c0-e0bd-49bc-943d-fb3e4f40d98b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Applications/LiveCamera/Web/camera.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Applications/LiveCamera/Web/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Applications/LiveCamera/start_web.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Applications/LiveCamera/start_worker.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/MIT-LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Autoloader.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Connection/AsyncTcpConnection.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Connection/ConnectionInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Connection/TcpConnection.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Connection/UdpConnection.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Events/Ev.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Events/Event.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Events/EventInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Events/Libevent.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Events/Select.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Lib/Constants.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Lib/Timer.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/MIT-LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Protocols/Frame.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Protocols/Http.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Protocols/Http/mime.types" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Protocols/ProtocolInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Protocols/Text.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Protocols/Websocket.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Protocols/Ws.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/WebServer.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/Worker.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/composer.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/composer.lock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/vendor/autoload.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/vendor/composer/ClassLoader.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/vendor/composer/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/vendor/composer/autoload_classmap.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/vendor/composer/autoload_namespaces.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/vendor/composer/autoload_psr4.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/vendor/composer/autoload_real.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/vendor/composer/autoload_static.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/Workerman/vendor/composer/installed.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/_var_www_html_CloudCamera_live-camera-worker_start.php.pid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/start.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/live-camera-worker/workerman.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="285948c0-e0bd-49bc-943d-fb3e4f40d98b" name="Default" comment="" />
     <ignored path="CloudCamera.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -69,20 +24,19 @@
     <splitter split-orientation="horizontal" split-proportion="0.6694529">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="camera.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="camera.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/live-camera-master/Applications/LiveCamera/Web/camera.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4664">
-                  <caret line="212" column="42" selection-start-line="212" selection-start-column="42" selection-end-line="212" selection-end-column="42" />
+                <state relative-caret-position="132">
+                  <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
                   <folding>
-                    <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="start_worker.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="start_worker.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/live-camera-master/Applications/LiveCamera/start_worker.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="331">
@@ -97,7 +51,7 @@
           <file leaf-file-name="Redis.php" pinned="false" current-in-tab="false">
             <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/Redis.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="463">
+                <state relative-caret-position="133">
                   <caret line="90" column="23" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="34" />
                   <folding />
                 </state>
@@ -271,12 +225,12 @@
       <workItem from="1469946399135" duration="1299000" />
       <workItem from="1469948076603" duration="10499000" />
       <workItem from="1469977585877" duration="2254000" />
-      <workItem from="1471074636211" duration="8614000" />
+      <workItem from="1471074636211" duration="8897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27648000" />
+    <option name="totallyTimeSpent" value="27931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1368" height="742" extended-state="6" />
@@ -314,7 +268,6 @@
         <state relative-caret-position="1122">
           <caret line="51" column="10" selection-start-line="31" selection-start-column="8" selection-end-line="51" selection-end-column="10" />
           <folding>
-            <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -375,7 +328,6 @@
         <state relative-caret-position="1122">
           <caret line="51" column="10" selection-start-line="31" selection-start-column="8" selection-end-line="51" selection-end-column="10" />
           <folding>
-            <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -433,14 +385,6 @@
     <entry file="file://$PROJECT_DIR$/live-camera-worker/Applications/LiveCamera/Web/camera.html" />
     <entry file="file://$PROJECT_DIR$/live-camera-worker/Workerman/Protocols/Websocket.php" />
     <entry file="file://$PROJECT_DIR$/live-camera-worker/Workerman/Protocols/Http.php" />
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/Redis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="90" column="23" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/yaffastdemo/yaf/application/views/index/swoolelive.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -465,16 +409,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/live-camera-master/Applications/LiveCamera/start_worker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="51" column="55" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="55" />
-          <folding>
-            <element signature="e#7#428#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/yaffastdemo/yaf/application/views/index/swoolelivecamera.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -485,11 +419,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/live-camera-master/Applications/LiveCamera/Web/camera.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="212" column="42" selection-start-line="212" selection-start-column="42" selection-end-line="212" selection-end-column="42" />
+        <state relative-caret-position="132">
+          <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
           <folding>
-            <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/Redis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="90" column="23" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/live-camera-master/Applications/LiveCamera/start_worker.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="51" column="55" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="55" />
+          <folding>
+            <element signature="e#7#428#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
