@@ -41,15 +41,13 @@ $recv_worker->onMessage = function($connection, $data)use($recv_worker, $objRedi
         switch ($typeCode){
             case 255216:
                 //jpeg图片类型
-//                $i = $objRedis->get('cloudcamera-test');
-//                file_put_contents('/var/www/html/CloudCamera/test_' . str_pad($i, 10, '0', STR_PAD_LEFT) . '.jpeg', $data);
-//                $objRedis->set('cloudcamera-test', ++$i);
+                $picId = $objRedis->incr('cloudcamera-test');
+                file_put_contents('/var/www/html/CloudCamera/temp/test_' . str_pad($picId, 10, '0', STR_PAD_LEFT) . '.jpeg', $data);
                 break;
-            default:
+            case 8273:
                 //wav音频类型
-                $i = $objRedis->get('cloudcamera-audio-test1');
-                file_put_contents('/var/www/html/CloudCamera/audio_test_' . str_pad($i, 10, '0', STR_PAD_LEFT) . '.wav', $data);
-                $objRedis->set('cloudcamera-audio-test1', ++$i);
+                $audioId = $objRedis->incr('cloudcamera-audio-test');
+                file_put_contents('/var/www/html/CloudCamera/temp/audio_test_' . str_pad($audioId, 10, '0', STR_PAD_LEFT) . '.wav', $data);
                 break;
         }
     }

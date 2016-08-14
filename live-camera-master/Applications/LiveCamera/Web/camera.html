@@ -4,11 +4,11 @@
     <title>live cam 录像页面</title>
 </head>
 <body>
-    <video autoplay id="sourcevid" style="width:320px;height:240px"></video>
-    <br>
-    提示：最好用火狐测试，谷歌浏览器升级了安全策略，谷歌浏览器只能在https下才能利用html5打开摄像头。
+    <video autoplay id="sourcevid" ></video>
+    <!--<br>-->
+    <!--提示：最好用火狐测试，谷歌浏览器升级了安全策略，谷歌浏览器只能在https下才能利用html5打开摄像头。-->
 
-    <canvas id="output" style="display:block;width:320px;height:240px;"></canvas>
+    <canvas id="output" style="display:block;"></canvas>
 
     <script type="text/javascript" charset="utf-8">
 
@@ -16,6 +16,8 @@
         var back = document.getElementById('output');
         var backcontext = back.getContext('2d');
         var video = document.getElementsByTagName('video')[0];
+        var video_width  = 0;
+        var video_height = 0;
 
         //音频
         var audioStream;
@@ -25,8 +27,8 @@
             //存放配置
             config = {};
 
-            config.sampleBits = config.sampleBits || 8;
-            config.sampleRate = config.sampleRate || (44100 / 6);
+            config.sampleBits = config.sampleBits || 16;
+            config.sampleRate = config.sampleRate || 44100;
 
             //预定义获取音频API
             window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.msAudioContext;
@@ -58,16 +60,17 @@
                         offset += this.buffer[i].length;
                     }
                     //压缩
-                    var compression = parseInt(this.inputSampleRate / this.outputSampleRate);
-                    var length      = data.length / compression;
-                    var result      = new Float32Array(parseInt(length));
-                    var index       = 0, j = 0;
-                    while (index < length) {
-                        result[index] = data[j];
-                        j += compression;
-                        index++;
-                    }
-                    return result;
+//                    var compression = parseInt(this.inputSampleRate / this.outputSampleRate);
+//                    var length      = data.length / compression;
+//                    var result      = new Float32Array(parseInt(length));
+//                    var index       = 0, j = 0;
+//                    while (index < length) {
+//                        result[index] = data[j];
+//                        j += compression;
+//                        index++;
+//                    }
+//                    return result;
+                    return data;
                 },
                 encodeWAV: function (){
                     var sampleRate = Math.min(audioData.inputSampleRate, audioData.outputSampleRate);
@@ -169,21 +172,33 @@
         
         var success = function(stream){
             video.src   = window.URL.createObjectURL(stream);
+            //设定canvas大小
+
+            video.addEventListener('loadedmetadata', function(){
+                video_width  = this.videoWidth;  //获取流数据宽度
+                video_height = this.videoHeight; //获取流数据高度
+
+                //设定canvas
+                back.setAttribute('width',  video_width);
+                back.setAttribute('height', video_height);
+            });
+
 
             audiostream = stream;
-            var rec     = new SRecorder(stream);
-            gRecorder   = rec;
-        };
+            gRecorder   = new SRecorder(stream);
 
-        socket.onopen = function(){
-            socket.binaryType = "blob";
+
             draw();
             audioRecordStart();
         };
 
+        socket.onopen = function(){
+            socket.binaryType = "blob";
+        };
+
         var draw = function(){
             try{
-                backcontext.drawImage(video,0,0, back.width, back.height);
+                backcontext.drawImage(video, 0, 0, video_width, video_height);
             }catch(e){
                 if (e.name == "NS_ERROR_NOT_AVAILABLE") {
                     return setTimeout(draw, 100);
@@ -191,7 +206,7 @@
                     throw e;
                 }
             }
-            if(video.src){
+            if(video.src && checkVideoIsReady()){
                 //使用blob方式传输二进制数据
                 back.toBlob(function(blob){
 //                    console.log(blob);
@@ -207,6 +222,11 @@
         navigator.getUserMedia({video:true, audio:true}, success, console.log);
 
         var audioRecordStart   = function (){
+            if (!checkVideoIsReady()){
+                setTimeout(audioRecordStart, 25);
+                return false;
+            }
+
             try {
                 if (gRecorder != null){
                     if (!door){
@@ -216,7 +236,7 @@
                 }
             } catch (e){
                 if (e.name == 'NS_ERROR_NOT_AVAILABLE'){
-                    return setTimeout(audioRecordEnd, 1000);
+                    return setTimeout(audioRecordEnd, 10);
                 } else {
                     throw e;
                 }
@@ -237,14 +257,21 @@
                 }
             } catch (e){
                 if (e.name == 'NS_ERROR_NOT_AVAILABLE') {
-                    return setTimeout(audioRecordEnd, 1000);
+                    return setTimeout(audioRecordEnd, 10);
                 } else {
                     throw e;
                 }
             }
 
-            setTimeout(audioRecordStart, 1000);
+            audioRecordStart();
         };
+
+        var checkVideoIsReady = function(){
+            if (!video_width && !video_height){
+                return false;
+            }
+            return true;
+        }
 
     </script>
 </body>
