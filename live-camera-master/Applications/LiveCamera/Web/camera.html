@@ -4,20 +4,36 @@
     <title>live cam 录像页面</title>
 </head>
 <body>
-    <video autoplay id="sourcevid" ></video>
+    <video autoplay hidden="hidden" id="sourcevid" ></video>
     <!--<br>-->
     <!--提示：最好用火狐测试，谷歌浏览器升级了安全策略，谷歌浏览器只能在https下才能利用html5打开摄像头。-->
+    <div id="record_area">
+        <!--播放、停止按钮-->
+        <div id="record_control" style="position: absolute;"><img id="record_control_button" style="width: 60px"  src="img/video_record.png"></div>
+        <canvas id="output" style="display: block;"></canvas>
+    </div>
 
-    <canvas id="output" style="display:block;"></canvas>
 
     <script type="text/javascript" charset="utf-8">
+        //状态记录
+        var record_status = {
+            record: 0,
+            socket: 0
+        };
 
         var socket = new WebSocket("ws://"+document.domain+":8080");
         var back = document.getElementById('output');
-        var backcontext = back.getContext('2d');
+        var backcontext    = back.getContext('2d');
         var video = document.getElementsByTagName('video')[0];
-        var video_width  = 0;
-        var video_height = 0;
+        var video_width    = 0;
+        var video_height   = 0;
+
+        //播放控制
+        var record_control = document.getElementById('record_control');
+
+        //录制区域
+        var record_area    = document.getElementById('record_area');
+        var record_control_button = document.getElementById('record_control_button');
 
         //音频
         var audioStream;
@@ -169,7 +185,7 @@
             }
         };
 //        var audio = document.getElementsByTagName('audio')[0];
-        
+
         var success = function(stream){
             video.src   = window.URL.createObjectURL(stream);
             //设定canvas大小
@@ -181,24 +197,62 @@
                 //设定canvas
                 back.setAttribute('width',  video_width);
                 back.setAttribute('height', video_height);
+
+                //设定div
+                record_area.style.width    = video_width;
+                record_area.style.height   = video_height;
+
+                //设定录像控制按钮位置
+                record_control.style.top   = video_height / 2 - 30;
+                record_control.style.left  = video_width - 100;
+
+                //绑定事件
+                record_control_button.onclick = function(){
+                    toggleRecordStatus();
+                };
+
+                draw();
+                audioRecordStart();
             });
 
 
             audiostream = stream;
             gRecorder   = new SRecorder(stream);
+        };
 
-
-            draw();
-            audioRecordStart();
+        var toggleRecordStatus = function(){
+            if (!record_status.record){
+                //开始录制
+                record_control_button.setAttribute('src', 'img/video_stop.png');
+                record_status.record = 1;
+            } else {
+                //结束录制
+                record_control_button.setAttribute('src', 'img/video_record.png');
+                record_status.record = 0;
+            }
         };
 
         socket.onopen = function(){
-            socket.binaryType = "blob";
+            record_status.socket = 1;
+            socket.binaryType    = "blob";
+        };
+
+        socket.onclose = function(){
+            //这里可以尝试重连
+            record_status.socket = 0;
         };
 
         var draw = function(){
             try{
                 backcontext.drawImage(video, 0, 0, video_width, video_height);
+                //设置字体样式
+                backcontext.font = "30px Courier New";
+                //设置字体填充颜色
+                backcontext.fillStyle = "red";
+                //从坐标点(50,50)开始绘制文字
+                backcontext.fillText("测试canvas↘↘↘↘", 50, 50);
+
+
             }catch(e){
                 if (e.name == "NS_ERROR_NOT_AVAILABLE") {
                     return setTimeout(draw, 100);
@@ -206,7 +260,7 @@
                     throw e;
                 }
             }
-            if(video.src && checkVideoIsReady()){
+            if(video.src && checkVideoIsReady() && record_status.socket && record_status.record){
                 //使用blob方式传输二进制数据
                 back.toBlob(function(blob){
 //                    console.log(blob);
@@ -247,7 +301,7 @@
         var audioRecordEnd = function (){
             try {
                 if (gRecorder != null){
-                    if (door){
+                    if (door && record_status.socket && record_status.record){
                         var sd_gRecorder = gRecorder.getBlob();
                         socket.send(sd_gRecorder());
                         gRecorder.clear();
