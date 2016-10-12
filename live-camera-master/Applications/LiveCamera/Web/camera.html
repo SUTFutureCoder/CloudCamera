@@ -189,6 +189,8 @@
         var success = function(stream){
             //发送身份串
 
+            //获取成功，注册用户
+            socket.send('{"user":"123456"}');
 
             video.src   = window.URL.createObjectURL(stream);
             //设定canvas大小
@@ -284,7 +286,7 @@
                 //使用blob方式传输二进制数据
                 back.toBlob(function(blob){
 //                    console.log(blob);
-                    socket.send(blob);
+//                    socket.send(blob);
                 }, 'image/jpeg', '1');
 //                socket.send();
 //                socket.send(back.toDataURL("image/jpeg", 0.5));
@@ -323,7 +325,7 @@
                 if (gRecorder != null){
                     if (door && checkRecordStatus()){
                         var sd_gRecorder = gRecorder.getBlob();
-                        socket.send(sd_gRecorder());
+//                        socket.send(sd_gRecorder());
                         gRecorder.clear();
                         gRecorder.stop();
                         door = false;

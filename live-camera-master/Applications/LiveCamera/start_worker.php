@@ -67,6 +67,7 @@ $recv_worker->onMessage = function($connection, $data)use($recv_worker, $objRedi
         }
     }
 
+
 //    file_put_contents('/var/www/html/CloudCamera/test.txt', print_r($connection, true), FILE_APPEND);
 //    file_put_contents('/var/www/html/CloudCamera/test.txt', print_r($data, true), FILE_APPEND);
 //    foreach($recv_worker->sendWorker->connections as $send_connection)
