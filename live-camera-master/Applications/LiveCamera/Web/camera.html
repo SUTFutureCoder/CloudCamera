@@ -13,11 +13,11 @@
         <canvas id="output" style="display: block;"></canvas>
     </div>
 
-
     <script type="text/javascript" charset="utf-8">
         //状态记录
         var record_status = {
             record: 0,
+            auth:   0,
             socket: 0
         };
 
@@ -187,6 +187,9 @@
 //        var audio = document.getElementsByTagName('audio')[0];
 
         var success = function(stream){
+            //发送身份串
+
+
             video.src   = window.URL.createObjectURL(stream);
             //设定canvas大小
 
@@ -222,14 +225,22 @@
 
         var toggleRecordStatus = function(){
             if (!record_status.record){
+                sendUserAuthKey();
                 //开始录制
                 record_control_button.setAttribute('src', 'img/video_stop.png');
-                record_status.record = 1;
+//                record_status.record = 1;
             } else {
                 //结束录制
                 record_control_button.setAttribute('src', 'img/video_record.png');
                 record_status.record = 0;
             }
+        };
+
+        var sendUserAuthKey = function(){
+            //这个地方需要使用服务端返回的数据
+            userUUID = 100000001;
+            userSecretKey = "testtest";
+            socket.send('{type:camera_init,user_id:' + userUUID + ', secret_key:"' + userSecretKey + '"}');
         };
 
         socket.onopen = function(){
@@ -240,6 +251,15 @@
         socket.onclose = function(){
             //这里可以尝试重连
             record_status.socket = 0;
+        };
+
+        socket.onmessage = function(rawData)
+        {
+            //接收从服务端返回的信息
+            var dataRec  = JSON.parse(rawData.data);
+            if (1 == dataRec.passport){
+                record_status.auth = 1;
+            }
         };
 
         var draw = function(){
@@ -260,7 +280,7 @@
                     throw e;
                 }
             }
-            if(video.src && checkVideoIsReady() && record_status.socket && record_status.record){
+            if(video.src && checkVideoIsReady() && checkRecordStatus()){
                 //使用blob方式传输二进制数据
                 back.toBlob(function(blob){
 //                    console.log(blob);
@@ -301,7 +321,7 @@
         var audioRecordEnd = function (){
             try {
                 if (gRecorder != null){
-                    if (door && record_status.socket && record_status.record){
+                    if (door && checkRecordStatus()){
                         var sd_gRecorder = gRecorder.getBlob();
                         socket.send(sd_gRecorder());
                         gRecorder.clear();
@@ -325,6 +345,14 @@
                 return false;
             }
             return true;
+        };
+
+        //检查录制开始条件
+        var checkRecordStatus = function(){
+            if (record_status.socket && record_status.record && record_status.auth){
+                return true;
+            }
+            return false;
         }
 
     </script>
